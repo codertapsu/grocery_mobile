@@ -28,5 +28,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$(FLUTTER_BUILD_NAME) Authentication with TouchId or FaceID</string>
 </dict>
 </plist>

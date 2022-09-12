@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../http/http_client.dart';
 
 class AuthenticationController extends GetxController {
+  final authed = true.obs;
   RxInt counter1 = 0.obs; // For reactive approach or RxInt(0) or Rx<Int>(0)
   int counter2 = 0; // For simple state management approach
   late final HttpClient _httpClient;
@@ -68,6 +69,11 @@ class AuthenticationController extends GetxController {
         print(e.requestOptions.toString());
         print(e.message);
       }
+    } catch (e, st) {
+      print('Error: $e\nStack trace: $st');
+      rethrow;
+    } finally {
+      print('Done');
     }
   }
 

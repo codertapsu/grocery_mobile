@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:grocery_mobile/presentation/bindings/product_binding.dart';
 
+import '../core/middlewares/auth_middleware.dart';
 import '../presentation/bindings/home_bingding.dart';
 import '../presentation/pages/home/home_page.dart';
 import '../presentation/pages/product/product_page.dart';
@@ -32,6 +33,9 @@ class AppPages {
       binding: HomeBinding(),
       preventDuplicates: true,
       transition: Transition.fadeIn,
+      middlewares: [
+        /// AuthMiddleware()
+      ],
     ),
     GetPage(
       name: _Paths.product,

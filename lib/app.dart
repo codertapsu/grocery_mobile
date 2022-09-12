@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         defaultTransition: Transition.fadeIn,
         logWriterCallback: (String text, {bool isError = false}) {
-          logger.i("GetXLog: $text");
+          // logger.i("GetXLog: $text");
           // debugPrint("GetXLog: $text");
         },
         navigatorObservers: <NavigatorObserver>[

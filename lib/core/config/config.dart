@@ -6,8 +6,12 @@ class AppConfig {
 
   late final Logger logger;
 
+  /// the one and only instance of this singleton
   static final AppConfig instance = AppConfig._internal();
+
   factory AppConfig() => instance;
+
+  /// private constructor
   AppConfig._internal() {
     logger = Logger(
       printer: PrettyPrinter(

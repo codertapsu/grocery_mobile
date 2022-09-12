@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/controllers/authentication_controller.dart';
+import '../../../core/controllers/wallet_controller.dart';
 import '../../controllers/home_controller.dart';
 
 // class HomePage extends StatefulWidget {
@@ -86,6 +87,7 @@ class HomePage extends GetView<HomeController> {
   String get tag => (HomeController).toString();
 
   late AuthenticationController _authenticationController;
+  final _walletController = Get.find<WalletController>();
 
   HomePage({Key? key}) : super(key: key) {
     _authenticationController = Get.find<AuthenticationController>(
@@ -111,6 +113,42 @@ class HomePage extends GetView<HomeController> {
               _authenticationController.signIn();
             },
             child: Text('Signin'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _walletController.connect(context);
+            },
+            child: Text('Conenct wallet'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              await _walletController.disconnect();
+            },
+            child: Text(
+              'disconnect',
+            ),
+          ),
+          Obx(
+            () => Text(
+                'Your wallet address is ${_walletController.address$.value}'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _walletController.buyWithEth(10.5);
+            },
+            child: Text('Test send ETH'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _walletController.buyWithGroceryCoin(15.5);
+            },
+            child: Text('Test send Coin'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _walletController.getEthBalance();
+            },
+            child: Text('Get ETH balance'),
           ),
           ElevatedButton(
             onPressed: () {
